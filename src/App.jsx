@@ -5,6 +5,7 @@ import Shop from './pages/Shop'
 import AddProduct from './pages/addProduct'
 import Cart from './components/cart/Cart'
 import Login from './redux/login/Login'
+import { Fragment } from 'react'
 
 function App() {
   return (
