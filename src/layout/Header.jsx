@@ -1,8 +1,11 @@
 import { FaCartPlus, FaUserCircle } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Header = () => {
-  
+  const cart = useSelector((state) =>
+    state.cart.reduce((acc, curr) => curr.productCount + acc, 0)
+  )
   return (
     <>
       <div className="container">
@@ -25,10 +28,11 @@ const Header = () => {
               </div>
             </div>
             <div className="flex justify-between items-center gap-5">
-              <Link to="/cart">
-                <i className="text-2xl">
+              <Link to="/cart" className="text-2xl flex items-center justify-center gap-5 bg-green-300 py-1 px-6 rounded-md">
+                <i>
                   <FaCartPlus />
                 </i>
+                <span className='text-rose-600'>{cart || 0}</span>
               </Link>
               <Link to="/login">
                 <i className="text-2xl">

@@ -2,11 +2,13 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import {
   decrementCartItem,
+  deleteCartItem,
   incrementCartItem,
 } from '../../redux/shoppingCart/cart/Actions'
 import {
   productQtyDecrement,
   productQtyIncrement,
+  productUpdate_deleteCart,
 } from '../../redux/shoppingCart/product/Actions'
 
 const CartItem = ({ item }) => {
@@ -29,7 +31,12 @@ const CartItem = ({ item }) => {
   const decrementQty = () => {
     dispatch(productQtyIncrement(productId))
     dispatch(decrementCartItem(productId))
+  }
 
+  const handleDeleteItem = () => {
+    dispatch(deleteCartItem(productId))
+    dispatch(productUpdate_deleteCart({productId, productCount}))
+    console.log(productId)
   }
 
   return (
@@ -55,7 +62,7 @@ const CartItem = ({ item }) => {
         </p>
       </div>
       <div className="con-span-2 flex items-center">
-        <button>delete</button>
+        <button onClick={handleDeleteItem}>delete</button>
       </div>
     </div>
   )

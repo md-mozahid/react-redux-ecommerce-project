@@ -1,7 +1,7 @@
 import {
   ADD_TO_CART,
-  CART_ITEM_INCREMENT,
   CART_ITEM_DECREMENT,
+  CART_ITEM_INCREMENT,
   DELETE_CART_ITEM,
 } from './ActionType'
 import initialState from './InitialState'
@@ -27,9 +27,10 @@ const reducer = (state = initialState, action) => {
           return item
         }),
       ]
-
+      
+    // delete from cart item
     case DELETE_CART_ITEM:
-      return state.cart.filter((item) => item.id !== payload)
+      return state.filter((item) => item.productId !== payload)
 
     case CART_ITEM_INCREMENT:
       return [

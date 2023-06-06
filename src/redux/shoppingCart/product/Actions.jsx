@@ -26,7 +26,7 @@ export const productQtyDecrement = (productId) => {
   }
 }
 
-export const productCount = (productId) => {
+export const productUpdate_deleteCart = (productId) => {
   return {
     type: QTY_UPDATE_WHEN_DELETE_CART_ITEM,
     payload: productId,
