@@ -1,6 +1,10 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addProduct } from '../../redux/shoppingCart/product/Actions'
+import { useNavigate } from 'react-router-dom'
 
 const ProductInputs = () => {
+  const dispatch = useDispatch()
   const [products, setProducts] = useState({
     productId: '',
     productName: '',
@@ -8,8 +12,8 @@ const ProductInputs = () => {
     productImageUrl: '',
     productPrice: '',
     productQuantity: '',
-    productCount: '',
   })
+
   const {
     productName,
     productCategory,
@@ -27,10 +31,18 @@ const ProductInputs = () => {
     })
   }
 
+   const navigate = useNavigate()
+
   const handleSubmit = (e) => {
+    const newProduct = {
+      ...products,
+      productId: Math.random().toString(16).slice(2),
+    }
     e.preventDefault()
-    console.log(products)
+    dispatch(addProduct(newProduct))
+    navigate('/products')
   }
+ 
   return (
     <>
       <div className="container">
@@ -42,7 +54,7 @@ const ProductInputs = () => {
               type="text"
               placeholder="Product name"
               name="productName"
-              required
+              // required
               value={productName}
               onChange={handleChange}
             />
@@ -51,7 +63,7 @@ const ProductInputs = () => {
               type="text"
               placeholder="Product category"
               name="productCategory"
-              required
+              // required
               value={productCategory}
               onChange={handleChange}
             />
@@ -60,7 +72,7 @@ const ProductInputs = () => {
               type="text"
               placeholder="Product image"
               name="productImageUrl"
-              required
+              // required
               value={productImageUrl}
               onChange={handleChange}
             />
@@ -69,7 +81,7 @@ const ProductInputs = () => {
               type="number"
               placeholder="Product price"
               name="productPrice"
-              required
+              // required
               value={productPrice}
               onChange={handleChange}
             />
@@ -78,11 +90,13 @@ const ProductInputs = () => {
               type="number"
               placeholder="Product quantity"
               name="productQuantity"
-              required
+              // required
               value={productQuantity}
               onChange={handleChange}
             />
-            <button className='btn btn-primary' type="submit">Add Product</button>
+            <button className="btn btn-primary btn-fw" type="submit">
+              Add Product
+            </button>
           </form>
         </div>
       </div>

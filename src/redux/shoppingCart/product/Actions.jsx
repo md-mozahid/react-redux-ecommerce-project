@@ -1,8 +1,8 @@
 import {
   ADD_NEW_PRODUCT,
-  PRODUCT_COUNT,
   PRODUCT_QTY_DECREMENT,
   PRODUCT_QTY_INCREMENT,
+  QTY_UPDATE_WHEN_DELETE_CART_ITEM,
 } from './ActionType'
 
 export const addProduct = (newProduct) => {
@@ -28,7 +28,7 @@ export const productQtyDecrement = (productId) => {
 
 export const productCount = (productId) => {
   return {
-    type: PRODUCT_COUNT,
+    type: QTY_UPDATE_WHEN_DELETE_CART_ITEM,
     payload: productId,
   }
 }
