@@ -6,33 +6,39 @@ const Header = () => {
   const cart = useSelector((state) =>
     state.cart.reduce((acc, curr) => curr.productCount + acc, 0)
   )
+
   return (
     <>
       <div className="container">
         <section className="bg-yellow-500 p-5">
           <div className="flex justify-between items-center">
-            <div>
+            <div className="col-span-3">
               <h1>E-commerce Site</h1>
             </div>
-            <div className="flex items-center justify-center gap-1">
-              <div>
-                <select name="" id="">
-                  <option value="">Shop1</option>
-                  <option value="">Shop2</option>
-                  <option value="">Shop3</option>
-                </select>
-              </div>
-              <div>
-                <input type="text" />
-                <button>Search</button>
-              </div>
+            <div className="flex items-center justify-center col-span-6">
+              <select className="w-48 px-2 py-2 bg-sky-700 rounded-l-md">
+                <option value="">All</option>
+                <option value="">Shop1</option>
+                <option value="">Shop2</option>
+                <option value="">Shop3</option>
+              </select>
+              <input
+                className="inputText rounded-none"
+                type="text"
+                placeholder="Search..."
+              />
+              <button className="btn rounded-r-md rounded-l-none">
+                Search
+              </button>
             </div>
-            <div className="flex justify-between items-center gap-5">
-              <Link to="/cart" className="text-2xl flex items-center justify-center gap-5 bg-green-300 py-1 px-6 rounded-md">
-                <i>
+            <div className="flex justify-between items-center gap-5 col-span-3">
+              <Link
+                to="/cart"
+                className="text-2xl flex items-center justify-center gap-5 bg-sky-700 py-1 px-6 rounded-md">
+                <i className="text-white">
                   <FaCartPlus />
                 </i>
-                <span className='text-rose-600'>{cart || 0}</span>
+                <span className="text-rose-600">{cart || 0}</span>
               </Link>
               <Link to="/login">
                 <i className="text-2xl">

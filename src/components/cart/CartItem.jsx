@@ -36,7 +36,6 @@ const CartItem = ({ item }) => {
   const handleDeleteItem = () => {
     dispatch(deleteCartItem(productId))
     dispatch(productUpdate_deleteCart({productId, productCount}))
-    console.log(productId)
   }
 
   return (

@@ -48,7 +48,7 @@ const ProductInputs = () => {
       <div className="container">
         <div className="text-center w-96 mx-auto">
           <h2 className="text-3xl text-center py-5">Add New Product</h2>
-          <form onSubmit={handleSubmit}>
+          <form className='space-y-4' onSubmit={handleSubmit}>
             <input
               className="inputText"
               type="text"
